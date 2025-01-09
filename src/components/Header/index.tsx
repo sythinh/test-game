@@ -1,0 +1,210 @@
+"use client";
+import React, { useState } from "react";
+import { Menu } from "@headlessui/react";
+import { ChevronDownIcon, CheckIcon } from "@heroicons/react/20/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/routing";
+import { usePathname } from "next/navigation";
+
+const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const [language, setLanguage] = useState(pathname.split("/")[1]);
+  const router = useRouter();
+  const t = useTranslations("Menu");
+
+  const changeLanguage = (locale: string) => {
+    router.push(`${locale}`);
+  };
+
+  const languages = [
+    {
+      key: "vi",
+      label: "Vietnamese",
+      flag: (
+        <Image
+          alt="flag"
+          width={40}
+          height={40}
+          src="/icons/vietnam.svg"
+          objectFit="contain"
+        />
+      ),
+    },
+    {
+      key: "en",
+      label: "English",
+      flag: (
+        <Image
+          alt="flag"
+          width={40}
+          height={40}
+          src="/icons/united-states.svg"
+          objectFit="contain"
+        />
+      ),
+    },
+  ];
+
+  return (
+    <header className="flex items-center text-white relative">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center z-0">
+        {/* Logo */}
+        <div className="flex items-center">
+          <Image
+            src="/images/logo.png"
+            alt="Logo"
+            width={100}
+            height={40}
+            className="object-contain"
+          />
+        </div>
+        <div className="flex gap-3 items-center">
+          {/* Navigation Links */}
+          <nav className="hidden md:flex space-x-20 font-medium uppercase text-base">
+            <Link href="#about" className="hover:text-purple-300">
+              {t("about")}
+            </Link>
+            <Link href="#games" className="hover:text-purple-300">
+              {t("games")}
+            </Link>
+            <Link href="#partners" className="hover:text-purple-300">
+              {t("partners")}
+            </Link>
+            <Link href="#contact" className="hover:text-purple-300">
+              {t("contact")}
+            </Link>
+          </nav>
+          {/* Language Selector */}
+          <Menu as="div" className="relative hidden md:block ml-12">
+            <Menu.Button className="flex items-center px-4 py-2 rounded-lg">
+              <span className="text-xl">
+                {languages.find((lang) => lang.key === language)?.flag}
+              </span>
+              <ChevronDownIcon className="ml-2 w-5 h-5" />
+            </Menu.Button>
+            <Menu.Items className="absolute right-0 w-44 bg-white text-black rounded-lg">
+              {languages.map((lang) => (
+                <Menu.Item key={lang.key}>
+                  {({ active }) => (
+                    <div key={lang.key}>
+                      <div
+                        className={`flex items-center px-2  rounded-lg ${
+                          active ? "bg-gray-200 " : ""
+                        }`}
+                      >
+                        <button
+                          onClick={() => changeLanguage(lang.key)}
+                          className={"flex items-center"}
+                        >
+                          <div>
+                            {lang?.key === language ? (
+                              <CheckIcon width={32} />
+                            ) : (
+                              <div className="w-8" />
+                            )}
+                          </div>
+                          {lang.flag}
+                          <span className="text-base ml-2">{lang.label}</span>
+                        </button>
+                      </div>
+                      <div className="last:hidden flex mx-3 h-[1px] bg-gray-400" />
+                    </div>
+                  )}
+                </Menu.Item>
+              ))}
+            </Menu.Items>
+          </Menu>
+          <div>
+            {/* Mobile Menu Toggle */}
+            <button
+              className="block md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <Bars3Icon className="w-8 h-8" />
+            </button>
+          </div>
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="fixed top-0 left-0 w-full h-screen bg-white z-50">
+              <div className="flex items-center justify-between px-4 py-4">
+                {/* Language Selector */}
+                <Menu as="div" className="relative">
+                  <Menu.Button className="flex items-center gap-2 px-2 py-1 border border-gray-300 rounded-md">
+                    {languages.find((lang) => lang.key === language)?.flag}
+                    <ChevronDownIcon className="w-4 h-4 text-gray-500" />
+                  </Menu.Button>
+                  <Menu.Items className="absolute left-0 mt-2 w-36 bg-white shadow-md rounded-md">
+                    {languages.map((lang) => (
+                      <Menu.Item key={lang.key}>
+                        {({ active }) => (
+                          <button
+                            onClick={() => changeLanguage(lang.key)}
+                            className={`flex items-center gap-2 px-3 py-2 w-full ${
+                              active ? "bg-gray-100" : ""
+                            }`}
+                          >
+                            {lang.flag}
+                            <span className="text-sm">{lang.label}</span>
+                          </button>
+                        )}
+                      </Menu.Item>
+                    ))}
+                  </Menu.Items>
+                </Menu>
+
+                {/* Close Button */}
+                <button onClick={() => setIsMobileMenuOpen(false)}>
+                  <XMarkIcon className="w-8 h-8 text-black" />
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="mt-8 px-4">
+                <ul className="text-center">
+                  <li className="py-4 border-b border-gray-200">
+                    <Link
+                      href="#about"
+                      className="block text-lg font-medium text-black hover:text-gray-700"
+                    >
+                      {t("about")}
+                    </Link>
+                  </li>
+                  <li className="py-4 border-b border-gray-200">
+                    <Link
+                      href="#games"
+                      className="block text-lg font-medium text-black hover:text-gray-700"
+                    >
+                      {t("games")}
+                    </Link>
+                  </li>
+                  <li className="py-4 border-b border-gray-200">
+                    <Link
+                      href="#partners"
+                      className="block text-lg font-medium text-black hover:text-gray-700"
+                    >
+                      {t("partners")}
+                    </Link>
+                  </li>
+                  <li className="py-4">
+                    <Link
+                      href="#contact"
+                      className="block text-lg font-medium text-black hover:text-gray-700"
+                    >
+                      {t("contact")}
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
