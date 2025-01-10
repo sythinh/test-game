@@ -74,7 +74,7 @@ const Header = () => {
                 <ChevronDownIcon className="ml-2 w-5 h-5" />
               </MenuButton>
               <MenuItems className="absolute right-0 w-44 bg-white text-black rounded-lg">
-                {LANGUAGES.map(lang => (
+                {LANGUAGES.map((lang, index) => (
                   <MenuItem key={lang.key}>
                     {({ active }) => (
                       <div key={lang.key}>
@@ -98,7 +98,11 @@ const Header = () => {
                             <span className="text-base ml-2">{lang.label}</span>
                           </button>
                         </div>
-                        <div className="flex mx-3 h-[1px] bg-gray-400" />
+                        <div
+                          className={`${
+                            index === 1 ? "hidden" : ""
+                          }  mx-3 h-[1px] bg-gray-400`}
+                        />
                       </div>
                     )}
                   </MenuItem>
@@ -127,20 +131,27 @@ const Header = () => {
                       <ChevronDownIcon className="w-4 h-4 text-gray-500" />
                     </MenuButton>
                     <MenuItems className="absolute left-0 mt-2 w-36 bg-white shadow-md rounded-md">
-                      {LANGUAGES.map(lang => (
+                      {LANGUAGES.map((lang, index) => (
                         <MenuItem key={lang.key}>
                           {({ active }) => (
-                            <button
-                              onClick={() => changeLanguage(lang.key)}
-                              className={`flex items-center gap-2 px-3 py-2 w-full ${
-                                active ? "bg-gray-100" : ""
-                              }`}
-                            >
-                              {lang.flag}
-                              <span className="text-sm text-black">
-                                {lang.label}
-                              </span>
-                            </button>
+                            <div>
+                              <button
+                                onClick={() => changeLanguage(lang.key)}
+                                className={`flex items-center gap-2 px-3 py-2 w-full ${
+                                  active ? "bg-gray-100" : ""
+                                }`}
+                              >
+                                {lang.flag}
+                                <span className="text-sm text-black">
+                                  {lang.label}
+                                </span>
+                              </button>
+                              <div
+                                className={`${
+                                  index === 1 ? "hidden" : ""
+                                }  mx-3 h-[1px] bg-gray-400`}
+                              />
+                            </div>
                           )}
                         </MenuItem>
                       ))}
