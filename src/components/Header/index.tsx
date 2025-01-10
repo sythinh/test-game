@@ -98,7 +98,7 @@ const Header = () => {
                             <span className="text-base ml-2">{lang.label}</span>
                           </button>
                         </div>
-                        <div className="last:hidden flex mx-3 h-[1px] bg-gray-400" />
+                        <div className="flex mx-3 h-[1px] bg-gray-400" />
                       </div>
                     )}
                   </MenuItem>
