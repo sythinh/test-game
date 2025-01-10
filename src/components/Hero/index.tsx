@@ -11,13 +11,15 @@ import { Input } from "@headlessui/react";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
+// hooks
+import { useIsMobileResize } from "@/hooks/useMobile";
+
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "700"], // Include the weights you need
 });
 
 const Hero = () => {
-  // Countdown timer state
   const [timeLeft, setTimeLeft] = useState({
     days: 30,
     hours: 0,
@@ -25,6 +27,8 @@ const Hero = () => {
     seconds: 0,
   });
   const t = useTranslations("Hero");
+
+  const isMobile = useIsMobileResize();
 
   const [scrollDirection, setScrollDirection] = useState("");
   const [lastScrollPosition, setLastScrollPosition] = useState(0);
@@ -35,7 +39,7 @@ const Hero = () => {
 
       if (currentScrollPosition > lastScrollPosition) {
         setScrollDirection("down");
-      } else if (currentScrollPosition < lastScrollPosition) {
+      } else if (currentScrollPosition === 0) {
         setScrollDirection("up");
       }
 
@@ -75,21 +79,26 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="relative w-full h-full md:h-svh flex flex-col-reverse  justify-center items-center text-center text-white bg-hero-bg-mobile md:bg-hero-bg-desktop bg-cover bg-center bg-no-repeat mx-auto px-4">
-      <div className="md:absolute md:z-0 md:left-0 ">
+      <div className="md:absolute md:z-0 md:left-0 mb-10 md:mb-0 md:bottom-0 ">
         <Image
-          width={900}
-          height={500}
+          width={938}
+          height={938}
           alt="ong_tien"
-          src="/images/ong_tien.png"
-          className="pl-16"
+          src={`/images/${isMobile ? "ong_tien_mobile.png" : "ong_tien.png"}`}
         />
       </div>
       <div className="flex flex-col w-full md:w-[756px] z-10 mt-20">
-        <h1 className="text-[40px] leading-[50px] md:text-7xl font-bold mt-6 mb-6 px-5 text-center">
-          {t("title")}
-        </h1>
+        <div className="flex flex-col md:flex-row items-center text-[40px] leading-[50px] md:text-7xl font-bold mt-6 mb-6 px-5 text-center">
+          <h2>{t("title")}</h2>
+          <h2>{t("title2")}</h2>
+        </div>
+
         <div className="md:px-20">
           <div className="flex items-center justify-center gap-4 md:gap-10 font-semibold text-black bg-white w-full rounded-lg px-10 py-5">
             <div className="flex flex-col justify-center">
@@ -138,7 +147,7 @@ const Hero = () => {
 
         <div className="flex flex-col mt-6 w-full items-center">
           <div>
-            <p className="mt-8 text-lg font-light md:px-32 mb-10">
+            <p className="mt-8 text-xs md:text-lg font-light md:px-32 mb-5 md:mb-10">
               {t("description")}
             </p>
           </div>
@@ -147,7 +156,7 @@ const Hero = () => {
             <Input
               type="email"
               placeholder={t("input")}
-              className="px-4 py-2 rounded-l bg-white text-black rounded-md w-full"
+              className="px-4 py-2 h-14 rounded-l bg-white text-black rounded-md w-full"
             />
             <ArrowRightIcon
               width={20}
@@ -155,11 +164,14 @@ const Hero = () => {
             />
           </div>
         </div>
-        <button className="fixed bottom-1/2 right-8 md:right-10 -translate-y-1/2 bg-white text-black p-3 rounded-full shadow-md hover:bg-gray-600 hover:text-white transition-colors">
+        <button className="fixed flex items-center justify-center w-14 h-14 md:w-10 md:h-10 bottom-1/2 right-8 md:right-10 -translate-y-1/2 bg-white text-black p-3 rounded-full shadow-md hover:bg-gray-600 hover:text-white transition-colors z-50">
           {scrollDirection === "down" ? (
-            <FaChevronUp width={40} height={40} />
+            <FaChevronUp
+              className="w-7 h-7 md:w-4 md:h-4"
+              onClick={handleScrollTop}
+            />
           ) : (
-            <FaChevronDown width={40} height={40} />
+            <FaChevronDown className="w-7 h-7 md:w-4 md:h-4" />
           )}
         </button>
       </div>
