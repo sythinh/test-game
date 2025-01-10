@@ -26,7 +26,7 @@ const Hero = () => {
   });
   const t = useTranslations("Hero");
 
-  const [scrollDirection, setScrollDirection] = useState(null);
+  const [scrollDirection, setScrollDirection] = useState("");
   const [lastScrollPosition, setLastScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const Hero = () => {
 
     const interval = setInterval(() => {
       const now = new Date();
-      const difference = targetDate - now;
+      const difference = targetDate.getTime() - now.getTime();
 
       if (difference > 0) {
         setTimeLeft({
