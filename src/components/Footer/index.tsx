@@ -1,14 +1,17 @@
 import React from "react";
-import { FaTwitter, FaFacebookSquare, FaLinkedin } from "react-icons/fa";
-
-import { CiLocationOn } from "react-icons/ci";
-import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
-
 import Image from "next/image";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
+
+// components
 import { Input } from "@headlessui/react";
 
+// icons
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
+import { FaTwitter, FaFacebookSquare, FaLinkedin } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+
 const Footer = () => {
+  const t = useTranslations("Footer");
+
   return (
     <footer className="text-white">
       <div
@@ -47,7 +50,7 @@ const Footer = () => {
             {/* Address Section */}
             <div className="mb-6 md:mb-0 text-left w-full md:w-1/2">
               <div className="mb-4 md:pr-5">
-                <h3 className="text-lg font-bold mb-2">Address</h3>
+                <h3 className="text-lg font-bold mb-2">{t("address")}</h3>
                 <div className="flex">
                   <div className="w-16">
                     <Image
@@ -58,14 +61,8 @@ const Footer = () => {
                     />
                   </div>
                   <div className="text-sm">
-                    <p className="mb-2">
-                      Valletta Buildings, South Street, Valletta - VLT 1103
-                      Malta, US
-                    </p>
-                    <p>
-                      20 Phan Dang Luu street, Hai Chau District, Danang city,
-                      Vietnam
-                    </p>
+                    <p className="mb-2">{t("addressDetailOne")}</p>
+                    <p>{t("addressDetailTwo")}</p>
                   </div>
                 </div>
               </div>
@@ -79,20 +76,18 @@ const Footer = () => {
                   />
                 </div>
 
-                <p>(+1) 555-0108-000 or (+236) 555-0108</p>
+                <p>{t("phone")}</p>
               </div>
             </div>
 
             {/* Subscribe Section */}
             <div className="text-left w-full md:w-1/2">
-              <h3 className="text-lg font-semibold mb-2">Subscribe</h3>
-              <p className="mb-4">
-                Subscribe to our newsletter to stay updated on our services.
-              </p>
+              <h3 className="text-lg font-semibold mb-2">{t("subscribe")}</h3>
+              <p className="mb-4">{t("subscribeDesc")}</p>
               <div className="relative w-full">
                 <Input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t("placeHolder")}
                   className="px-4 py-2 rounded-md bg-transparent text-white w-full border bottom-2 border-white outline-none"
                 />
                 <ArrowRightIcon
