@@ -6,50 +6,53 @@ const AboutUs = () => {
   const t = useTranslations("About");
 
   return (
-    <section className="md:py-16 md:px-16 container mx-auto px-4">
+    <section className="md:py-16 md:px-16 container mx-auto">
       <div className="flex flex-col md:flex-row mx-auto w-full md:w-2/3">
         {/* Heading */}
-        <div className="flex flex-col w-full md:w-1/2 md:mr-10">
+        <div className="flex flex-col w-full md:w-1/2 md:mr-10 px-4">
           <div className="mb-12 w-full">
             <h2 className="text-[40px] md:text-6xl font-bold text-gray-900">
               {t("title")}
             </h2>
-            <p className="text-gray-600 mt-4">{t("description")}</p>
+            <p className="text-base text-gray-600 mt-4">{t("description")}</p>
           </div>
 
           {/* Stats Section */}
           <div className="flex md:flex-col justify-between mb-10 md:mb-0">
             <div className="">
-              <div className="text-5xl font-extrabold text-blue-600">
-                <h3 className="relative">
-                  600 +<p className="absolute left-24 top-1/2 text-lg">M</p>
-                </h3>
+              <div className="text-5xl font-extrabold text-blue-600 flex">
+                <h3 className="relative">600</h3>
+                <p className="text-lg top-5 relative font-serif">
+                  {t("count")}
+                </p>
+                <span>+</span>
               </div>
               <p className="text-black mt-2 font-bold">{t("users")}</p>
             </div>
             <div className="md:mt-10">
-              <h3 className="text-5xl font-extrabold text-blue-600">135+</h3>
+              <div className="text-5xl font-extrabold text-blue-600">
+                <h3 className="">135+</h3>
+              </div>
               <p className="ext-black font-bold mt-2">{t("games")}</p>
             </div>
           </div>
         </div>
 
         {/* Features Section */}
-        <div className="bg-grayCream flex flex-col gap-5 justify-center w-full md:w-1/2 p-5 md:px-12">
-          <div className="flex items-start space-x-4">
-            <div className="w-[50px]">
+        <div className="bg-grayCream flex flex-col gap-8 justify-center w-full md:w-1/2 py-8 md:px-4">
+          <div className="flex gap-3 px-4">
+            <div className="w-10 h-10 md:w-12 md:h-12">
               <Image src="/icons/time.svg" width={50} height={50} alt="time" />
             </div>
-            <div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">
+            <div className="w-3/4">
+              <h4 className="text-xl font-bold text-gray-900 pb-2">
                 {t("24h")}
               </h4>
-              <p className="text-gray-600">{t("desc24h")}</p>
+              <p className="text-gray-600 text-base">{t("desc24h")}</p>
             </div>
           </div>
-
-          <div className="flex items-start space-x-4">
-            <div className="w-[50px]">
+          <div className="flex gap-3 px-4">
+            <div className="w-10 h-10 md:w-12 md:h-12">
               <Image
                 src="/icons/design.svg"
                 width={50}
@@ -57,23 +60,22 @@ const AboutUs = () => {
                 alt="time"
               />
             </div>
-            <div>
+            <div className="w-3/4">
               <h4 className="text-xl font-bold text-gray-900 mb-2">
                 {t("design")}
               </h4>
-              <p className="text-gray-600">{t("descDesign")}</p>
+              <p className="text-gray-600 text-base">{t("descDesign")}</p>
             </div>
           </div>
-
-          <div className="flex items-start space-x-4">
-            <div className="w-[50px]">
+          <div className="flex gap-3 px-4">
+            <div className="w-10 h-10 md:w-12 md:h-12">
               <Image src="/icons/team.svg" width={50} height={50} alt="time" />
             </div>
-            <div>
+            <div className="w-3/4">
               <h4 className="text-xl font-bold text-gray-900 mb-2">
                 {t("team")}
               </h4>
-              <p className="text-gray-600">{t("descTeam")}</p>
+              <p className="text-gray-600 text-base">{t("descTeam")}</p>
             </div>
           </div>
         </div>
