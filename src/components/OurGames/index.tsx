@@ -19,7 +19,7 @@ const OurGames = () => {
         {GAMES.map((game, index) => (
           <div
             key={index}
-            className={`relative rounded-lg overflow-hidden group  transition ${
+            className={`relative rounded-lg overflow-hidden group transition ${
               index % 2 === 1 ? "mt-10 md:mt-20" : ""
             }`}
           >
@@ -31,14 +31,14 @@ const OurGames = () => {
               className="object-cover group-hover:scale-105 transition-transform"
             />
             <div
-              className={`p-4 absolute z-10 ${
+              className={`p-4 absolute z-0 ${
                 index % 2 === 1 ? "bottom-5" : "bottom-14 md:bottom-24"
               } left-2 text-white group`}
             >
               <h3 className="text-[24px] md:text-5xl font-bold">
                 {game.title}
               </h3>
-              <p className="text-sm  mt-2">{game.description}</p>
+              <p className="text-xs md:text-sm mt-2">{game.description}</p>
             </div>
           </div>
         ))}
