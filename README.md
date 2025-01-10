@@ -1,2 +1,4 @@
 - Figma UI Test: https://www.figma.com/design/aypVCPDSXI8ddzYTKICxCW/Ba%CC%80i-test---DEV-FE?node-id=2-12906&t=bJFiwGN42GuSMESD-0
 - Deploy: [https://baithi-fe.vercel.app/](https://test-game-thanhtrinhs-projects.vercel.app/en)
+- Image DeskTop: ![desktpop](https://github.com/user-attachments/assets/d8c9205c-72f8-4c34-be81-23d1a88433f7)
+- Image Mobile: ![mobile](https://github.com/user-attachments/assets/5503e034-b9f9-491a-b6f8-d98d1c820c08)
