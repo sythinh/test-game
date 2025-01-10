@@ -1,2 +1,2 @@
 - Figma UI Test: https://www.figma.com/design/aypVCPDSXI8ddzYTKICxCW/Ba%CC%80i-test---DEV-FE?node-id=2-12906&t=bJFiwGN42GuSMESD-0
-- Deploy: https://baithi-fe.vercel.app/
+- Deploy: [https://baithi-fe.vercel.app/](https://test-game-thanhtrinhs-projects.vercel.app/en)
