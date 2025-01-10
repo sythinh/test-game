@@ -137,7 +137,9 @@ const Header = () => {
                               }`}
                             >
                               {lang.flag}
-                              <span className="text-sm">{lang.label}</span>
+                              <span className="text-sm text-black">
+                                {lang.label}
+                              </span>
                             </button>
                           )}
                         </MenuItem>
