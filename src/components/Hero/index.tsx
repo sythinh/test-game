@@ -83,7 +83,7 @@ const Hero = () => {
           height={500}
           alt="ong_tien"
           src="/images/ong_tien.png"
-          className="ml-10"
+          className="pl-16"
         />
       </div>
       <div className="flex flex-col w-full md:w-[756px] z-10 mt-20">
