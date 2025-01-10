@@ -6,7 +6,8 @@
     "contact": "Liên Hệ"
   },
   "Hero": {
-    "title": "Trò chơi sắp ra mắt",
+    "title": "Trò chơi",
+    "title2": "sắp ra mắt",
     "description": "Chúng tôi sẽ trở lại với một điều tuyệt vời. Để nhận các bản cập nhật mới nhất về trò chơi, vui lòng đăng ký nhận bản tin của chúng tôi.",
     "days": "Ngày",
     "hours": "Giờ",
@@ -24,7 +25,8 @@
     "design": "Thiết Kế",
     "descDesign": "Kết hợp các vũ trụ giàu trí tưởng tượng, động lực chơi và lối chơi chưa từng có, trò chơi của chúng tôi vượt qua ranh giới của thế giới ảo bằng cách tạo ra lối chơi sáng tạo. ",
     "team": "Đội Ngũ",
-    "descTeam": "Etech là một studio quốc tế, từng đoạt giải thưởng gồm các nhà thiết kế, nghệ sĩ, họa sĩ hoạt hình và nhà sản xuất chuyên tạo ra nội dung cho những tên tuổi lớn nhất trong lĩnh vực điện ảnh và trò chơi điện tử."
+    "descTeam": "Etech là một studio quốc tế, từng đoạt giải thưởng gồm các nhà thiết kế, nghệ sĩ, họa sĩ hoạt hình và nhà sản xuất chuyên tạo ra nội dung cho những tên tuổi lớn nhất trong lĩnh vực điện ảnh và trò chơi điện tử.",
+    "count": "triệu"
   },
   "OurGames": {
     "title": "Trò chơi",
