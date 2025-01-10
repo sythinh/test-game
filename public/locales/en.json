@@ -6,7 +6,8 @@
     "contact": "Contact Us"
   },
   "Hero": {
-    "title": "We’re Getting Ready",
+    "title": "We’re",
+    "title2": "Getting Ready",
     "description": "We will back to something amazing. Getting the latest updates about our games. Please sign up to our newsletter.",
     "days": "Days",
     "hours": "Hours",
@@ -24,7 +25,8 @@
     "design": "Design",
     "descDesign": "Combining imaginative universes, play dynamics, and unprecedented gameplay, our games transcend the boundaries of the virtual world by weaving innovative gameplay.",
     "team": "Team",
-    "descTeam": "Etech is an award-winning, international studio of designers, artists, animators and producers that create content for the biggest names in film and video games. "
+    "descTeam": "Etech is an award-winning, international studio of designers, artists, animators and producers that create content for the biggest names in film and video games.",
+    "count": "M"
   },
   "OurGames": {
     "title": "Our Games",
