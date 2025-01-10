@@ -2,17 +2,21 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 
 // icons
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 // constants
 import { PARTNERS } from "@/constants/partners";
-import { useTranslations } from "next-intl";
+
+// hooks
+import { useIsMobileResize } from "@/hooks/useMobile";
 
 const OurPartners = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerRow = 4;
+  const isMobile = useIsMobileResize();
+  const itemsPerRow = isMobile ? 3 : 4;
   const t = useTranslations("Partners");
 
   const handlePrev = () => {
@@ -31,12 +35,12 @@ const OurPartners = () => {
 
   return (
     <div className="relative w-full bg-grayCream py-10 md:py-20">
-      <h2 className="text-center text-[40px]  md:text-6xl font-semibold mb-6">
+      <h2 className="text-center text-[40px]  md:text-6xl font-semibold mb-4  md:mb-6">
         {t("title")}
       </h2>
       <div className="overflow-hidden relative w-full max-w-7xl mx-auto">
         <div
-          className="flex transition-transform duration-700 ease-in-out mt-8"
+          className="flex transition-transform duration-700 ease-in-out md:mt-8"
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
           }}
@@ -45,7 +49,7 @@ const OurPartners = () => {
             (_, groupIndex) => (
               <div
                 key={groupIndex}
-                className="flex w-full flex-shrink-0 justify-center gap-3"
+                className="flex w-full flex-shrink-0 justify-center gap-8 md:gap-3"
               >
                 {PARTNERS.slice(
                   groupIndex * itemsPerRow,
@@ -68,13 +72,13 @@ const OurPartners = () => {
         {/* Prev and Next Buttons */}
         <button
           onClick={handlePrev}
-          className="absolute top-1/2 left-4 md:left-1 -translate-y-1/2 bg-white text-black p-3 rounded-lg shadow-md hover:bg-gray-600 hover:text-white transition-colors"
+          className="absolute w-10 h-10 top-1/2 left-4 md:left-1 -translate-y-1/2 bg-white text-black p-3 rounded-xl shadow-md hover:bg-gray-600 hover:text-white transition-colors"
         >
           <FaChevronLeft width={40} height={40} />
         </button>
         <button
           onClick={handleNext}
-          className="absolute top-1/2 right-4 md:right-1 -translate-y-1/2 bg-white text-black p-3 rounded-lg shadow-md hover:bg-gray-600 hover:text-white transition-colors"
+          className="absolute w-10 h-10 top-1/2 right-4 md:right-1 -translate-y-1/2 bg-white text-black p-3 rounded-xl shadow-md hover:bg-gray-600 hover:text-white transition-colors"
         >
           <FaChevronRight width={40} height={40} />
         </button>
