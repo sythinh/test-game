@@ -87,21 +87,20 @@ const Hero = () => {
     <div className="relative w-full h-full md:h-svh flex flex-col-reverse  justify-center items-center text-center text-white bg-hero-bg-mobile md:bg-hero-bg-desktop bg-cover bg-center bg-no-repeat mx-auto px-4">
       <div className="md:absolute md:z-0 md:left-0 mb-10 md:mb-0 md:bottom-0 ">
         <Image
-          width={938}
-          height={938}
+          width={780}
+          height={500}
           alt="ong_tien"
           src={`/images/${isMobile ? "ong_tien_mobile.png" : "ong_tien.png"}`}
         />
       </div>
       <div className="flex flex-col w-full md:w-[756px] z-10 mt-20">
-        <div className="flex flex-col md:flex-row items-center text-[40px] leading-[50px] md:text-7xl font-bold mt-6 mb-6 px-5 text-center">
-          <h2>{t("title")}</h2>
-            &nbsp;
+        <div className="flex flex-col md:flex-row items-center text-[40px] leading-[50px] md:text-7xl font-bold mt-6 mb-6 px- py-5 text-center">
+          <h2>{t("title")} &nbsp;</h2>
           <h2>{t("title2")}</h2>
         </div>
 
         <div className="md:px-20">
-          <div className="flex items-center justify-center gap-4 md:gap-10 font-semibold text-black bg-white w-full rounded-lg px-10 py-5">
+          <div className="flex items-center justify-center gap-4 md:gap-10 font-semibold text-black bg-white w-full rounded-3xl px-10 py-5">
             <div className="flex flex-col justify-center">
               <div
                 className={`text-[40px] md:text-6xl ${playfairDisplay.className} mb-4`}
