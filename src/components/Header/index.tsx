@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { Menu } from "@headlessui/react";
+import React, { useEffect, useState } from "react";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon, CheckIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
@@ -8,46 +8,32 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
+import { LANGUAGES } from "@/constants";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const [language, setLanguage] = useState(pathname.split("/")[1]);
   const router = useRouter();
   const t = useTranslations("Menu");
+  const language = pathname.split("/")[1];
 
   const changeLanguage = (locale: string) => {
     router.push(`${locale}`);
   };
 
-  const languages = [
-    {
-      key: "vi",
-      label: "Vietnamese",
-      flag: (
-        <Image
-          alt="flag"
-          width={40}
-          height={40}
-          src="/icons/vietnam.svg"
-          objectFit="contain"
-        />
-      ),
-    },
-    {
-      key: "en",
-      label: "English",
-      flag: (
-        <Image
-          alt="flag"
-          width={40}
-          height={40}
-          src="/icons/united-states.svg"
-          objectFit="contain"
-        />
-      ),
-    },
-  ];
+  useEffect(() => {
+    const html = document.documentElement;
+
+    // Theo dõi khi Menu mở
+    const observer = new MutationObserver(() => {
+      html.style.overflow = "";
+      html.style.paddingRight = "";
+    });
+
+    observer.observe(html, { attributes: true, attributeFilter: ["style"] });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header className="flex items-center text-white relative">
@@ -79,45 +65,47 @@ const Header = () => {
             </Link>
           </nav>
           {/* Language Selector */}
-          <Menu as="div" className="relative hidden md:block ml-12">
-            <Menu.Button className="flex items-center px-4 py-2 rounded-lg">
-              <span className="text-xl">
-                {languages.find((lang) => lang.key === language)?.flag}
-              </span>
-              <ChevronDownIcon className="ml-2 w-5 h-5" />
-            </Menu.Button>
-            <Menu.Items className="absolute right-0 w-44 bg-white text-black rounded-lg">
-              {languages.map((lang) => (
-                <Menu.Item key={lang.key}>
-                  {({ active }) => (
-                    <div key={lang.key}>
-                      <div
-                        className={`flex items-center px-2  rounded-lg ${
-                          active ? "bg-gray-200 " : ""
-                        }`}
-                      >
-                        <button
-                          onClick={() => changeLanguage(lang.key)}
-                          className={"flex items-center"}
+          <div className="relative hidden md:block pl-12">
+            <Menu>
+              <MenuButton className="flex items-center px-4 py-2 rounded-lg">
+                <span className="text-xl">
+                  {LANGUAGES.find(lang => lang.key === language)?.flag}
+                </span>
+                <ChevronDownIcon className="ml-2 w-5 h-5" />
+              </MenuButton>
+              <MenuItems className="absolute right-0 w-44 bg-white text-black rounded-lg">
+                {LANGUAGES.map(lang => (
+                  <MenuItem key={lang.key}>
+                    {({ active }) => (
+                      <div key={lang.key}>
+                        <div
+                          className={`flex items-center px-2  rounded-lg ${
+                            active ? "bg-gray-200 " : ""
+                          }`}
                         >
-                          <div>
-                            {lang?.key === language ? (
-                              <CheckIcon width={32} />
-                            ) : (
-                              <div className="w-8" />
-                            )}
-                          </div>
-                          {lang.flag}
-                          <span className="text-base ml-2">{lang.label}</span>
-                        </button>
+                          <button
+                            onClick={() => changeLanguage(lang.key)}
+                            className={"flex items-center"}
+                          >
+                            <div>
+                              {lang?.key === language ? (
+                                <CheckIcon width={32} />
+                              ) : (
+                                <div className="w-8" />
+                              )}
+                            </div>
+                            {lang.flag}
+                            <span className="text-base ml-2">{lang.label}</span>
+                          </button>
+                        </div>
+                        <div className="last:hidden flex mx-3 h-[1px] bg-gray-400" />
                       </div>
-                      <div className="last:hidden flex mx-3 h-[1px] bg-gray-400" />
-                    </div>
-                  )}
-                </Menu.Item>
-              ))}
-            </Menu.Items>
-          </Menu>
+                    )}
+                  </MenuItem>
+                ))}
+              </MenuItems>
+            </Menu>
+          </div>
           <div>
             {/* Mobile Menu Toggle */}
             <button
@@ -132,33 +120,35 @@ const Header = () => {
             <div className="fixed top-0 left-0 w-full h-screen bg-white z-50">
               <div className="flex items-center justify-between px-4 py-4">
                 {/* Language Selector */}
-                <Menu as="div" className="relative">
-                  <Menu.Button className="flex items-center gap-2 px-2 py-1 border border-gray-300 rounded-md">
-                    {languages.find((lang) => lang.key === language)?.flag}
-                    <ChevronDownIcon className="w-4 h-4 text-gray-500" />
-                  </Menu.Button>
-                  <Menu.Items className="absolute left-0 mt-2 w-36 bg-white shadow-md rounded-md">
-                    {languages.map((lang) => (
-                      <Menu.Item key={lang.key}>
-                        {({ active }) => (
-                          <button
-                            onClick={() => changeLanguage(lang.key)}
-                            className={`flex items-center gap-2 px-3 py-2 w-full ${
-                              active ? "bg-gray-100" : ""
-                            }`}
-                          >
-                            {lang.flag}
-                            <span className="text-sm">{lang.label}</span>
-                          </button>
-                        )}
-                      </Menu.Item>
-                    ))}
-                  </Menu.Items>
-                </Menu>
+                <div className="relative">
+                  <Menu>
+                    <MenuButton className="flex items-center gap-2 px-2 py-1 border border-gray-300 rounded-md">
+                      {LANGUAGES.find(lang => lang.key === language)?.flag}
+                      <ChevronDownIcon className="w-4 h-4 text-gray-500" />
+                    </MenuButton>
+                    <MenuItems className="absolute left-0 mt-2 w-36 bg-white shadow-md rounded-md">
+                      {LANGUAGES.map(lang => (
+                        <MenuItem key={lang.key}>
+                          {({ active }) => (
+                            <button
+                              onClick={() => changeLanguage(lang.key)}
+                              className={`flex items-center gap-2 px-3 py-2 w-full ${
+                                active ? "bg-gray-100" : ""
+                              }`}
+                            >
+                              {lang.flag}
+                              <span className="text-sm">{lang.label}</span>
+                            </button>
+                          )}
+                        </MenuItem>
+                      ))}
+                    </MenuItems>
+                  </Menu>
+                </div>
 
                 {/* Close Button */}
                 <button onClick={() => setIsMobileMenuOpen(false)}>
-                  <XMarkIcon className="w-8 h-8 text-black" />
+                  <XMarkIcon className="w-10 h-10 text-black pr-3" />
                 </button>
               </div>
 
