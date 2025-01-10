@@ -8,13 +8,15 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 // constants
 import { PARTNERS } from "@/constants/partners";
+import { useTranslations } from "next-intl";
 
 const OurPartners = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerRow = 4;
+  const t = useTranslations("Partners");
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
+    setCurrentIndex(prevIndex =>
       prevIndex === 0
         ? Math.ceil(PARTNERS.length / itemsPerRow) - 1
         : prevIndex - 1
@@ -23,14 +25,14 @@ const OurPartners = () => {
 
   const handleNext = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex + 1) % Math.ceil(PARTNERS.length / itemsPerRow)
+      prevIndex => (prevIndex + 1) % Math.ceil(PARTNERS.length / itemsPerRow)
     );
   };
 
   return (
     <div className="relative w-full bg-grayCream py-10 md:py-20">
       <h2 className="text-center text-[40px]  md:text-6xl font-semibold mb-6">
-        Our Partners
+        {t("title")}
       </h2>
       <div className="overflow-hidden relative w-full max-w-7xl mx-auto">
         <div
@@ -48,7 +50,7 @@ const OurPartners = () => {
                 {PARTNERS.slice(
                   groupIndex * itemsPerRow,
                   groupIndex * itemsPerRow + itemsPerRow
-                ).map((partner) => (
+                ).map(partner => (
                   <div key={partner.id} className="flex justify-center w-1/4">
                     <Image
                       src={partner.src}
