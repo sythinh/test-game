@@ -95,7 +95,7 @@ const Hero = () => {
       </div>
       <div className="flex flex-col w-full md:w-[756px] z-10 mt-20">
         <div className="flex flex-col md:flex-row items-center text-[40px] leading-[50px] md:text-7xl font-bold mt-6 mb-6 px- py-5 text-center">
-          <h2>{t("title")} &nbsp;</h2>
+          <h2>{t("title")}&nbsp;</h2>
           <h2>{t("title2")}</h2>
         </div>
 
