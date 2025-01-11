@@ -87,8 +87,10 @@ const Hero = () => {
     <div className="relative w-full h-full md:h-svh flex flex-col-reverse  justify-center items-center text-center text-white bg-hero-bg-mobile md:bg-hero-bg-desktop bg-cover bg-center bg-no-repeat mx-auto px-4">
       <div className="md:absolute md:z-0 md:left-0 mb-10 md:mb-0 md:bottom-0 ">
         <Image
-          width={780}
-          height={500}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          width={738}
+          height={738}
+          style={{ maxWidth: "100%", height: "auto" }}
           alt="ong_tien"
           src={`/images/${isMobile ? "ong_tien_mobile.png" : "ong_tien.png"}`}
         />
@@ -164,14 +166,14 @@ const Hero = () => {
             />
           </div>
         </div>
-        <button className="fixed flex items-center justify-center w-14 h-14 md:w-10 md:h-10 bottom-1/2 right-8 md:right-10 -translate-y-1/2 bg-white text-black p-3 rounded-full shadow-md hover:bg-gray-600 hover:text-white transition-colors z-50">
+        <button
+          onClick={handleScrollTop}
+          className="fixed flex items-center justify-center w-10 h-10 md:w-20 md:h-20 border bottom-[0.5%] right-8 md:right-10 -translate-y-1/2 bg-white text-black p-3 rounded-full shadow-md hover:bg-gray-600 hover:text-white transition-colors z-50"
+        >
           {scrollDirection === "down" ? (
-            <FaChevronUp
-              className="w-7 h-7 md:w-4 md:h-4"
-              onClick={handleScrollTop}
-            />
+            <FaChevronUp className="w-7 h-7" />
           ) : (
-            <FaChevronDown className="w-7 h-7 md:w-4 md:h-4" />
+            <FaChevronDown className="w-7 h-7" />
           )}
         </button>
       </div>
