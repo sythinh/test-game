@@ -156,7 +156,7 @@ const Hero = () => {
             <Input
               type="email"
               placeholder={t("input")}
-              className="px-4 py-2 h-14 rounded-l bg-white text-black rounded-md w-full"
+              className="px-4 py-2 h-14 rounded-l bg-white text-black rounded-md w-full outline-none"
             />
             <ArrowRightIcon
               width={20}
