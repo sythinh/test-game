@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
+
+// constants
 import { LANGUAGES } from "@/constants";
 
 const Header = () => {
@@ -51,16 +53,16 @@ const Header = () => {
         <div className="flex gap-3 items-center">
           {/* Navigation Links */}
           <nav className="hidden md:flex space-x-20 font-medium uppercase text-base">
-            <Link href="#about" className="hover:text-purple-300">
+            <Link href="javascript:void(0)" className="hover:text-purple-300">
               {t("about")}
             </Link>
-            <Link href="#games" className="hover:text-purple-300">
+            <Link href="javascript:void(0)" className="hover:text-purple-300">
               {t("games")}
             </Link>
-            <Link href="#partners" className="hover:text-purple-300">
+            <Link href="javascript:void(0)" className="hover:text-purple-300">
               {t("partners")}
             </Link>
-            <Link href="#contact" className="hover:text-purple-300">
+            <Link href="javascript:void(0)" className="hover:text-purple-300">
               {t("contact")}
             </Link>
           </nav>
@@ -69,7 +71,7 @@ const Header = () => {
             <Menu>
               <MenuButton className="flex items-center px-4 py-2 rounded-lg">
                 <span className="text-xl">
-                  {LANGUAGES.find(lang => lang.key === language)?.flag}
+                  {LANGUAGES.find((lang) => lang.key === language)?.flag}
                 </span>
                 <ChevronDownIcon className="ml-2 w-5 h-5" />
               </MenuButton>
@@ -127,7 +129,7 @@ const Header = () => {
                 <div className="relative">
                   <Menu>
                     <MenuButton className="flex items-center gap-2 px-2 py-1 border border-gray-300 rounded-md">
-                      {LANGUAGES.find(lang => lang.key === language)?.flag}
+                      {LANGUAGES.find((lang) => lang.key === language)?.flag}
                       <ChevronDownIcon className="w-4 h-4 text-gray-500" />
                     </MenuButton>
                     <MenuItems className="absolute left-0 mt-2 w-36 bg-white shadow-md rounded-md">
@@ -170,7 +172,7 @@ const Header = () => {
                 <ul className="text-center">
                   <li className="py-4 border-b border-gray-200">
                     <Link
-                      href="#about"
+                      href="javascript:void(0)"
                       className="block text-lg font-medium text-black hover:text-gray-700"
                     >
                       {t("about")}
@@ -178,7 +180,7 @@ const Header = () => {
                   </li>
                   <li className="py-4 border-b border-gray-200">
                     <Link
-                      href="#games"
+                      href="javascript:void(0)"
                       className="block text-lg font-medium text-black hover:text-gray-700"
                     >
                       {t("games")}
@@ -186,7 +188,7 @@ const Header = () => {
                   </li>
                   <li className="py-4 border-b border-gray-200">
                     <Link
-                      href="#partners"
+                      href="javascript:void(0)"
                       className="block text-lg font-medium text-black hover:text-gray-700"
                     >
                       {t("partners")}
@@ -194,7 +196,7 @@ const Header = () => {
                   </li>
                   <li className="py-4">
                     <Link
-                      href="#contact"
+                      href="javascript:void(0)"
                       className="block text-lg font-medium text-black hover:text-gray-700"
                     >
                       {t("contact")}
