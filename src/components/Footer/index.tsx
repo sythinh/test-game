@@ -23,7 +23,7 @@ const Footer = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="container mx-auto flex flex-col md:flex-row h-full md:h-[446px] justify-around items-center py-10 px-4">
+        <div className="container mx-auto flex flex-col md:flex-row h-full md:h-[446px] justify-around items-center py-16 px-4">
           {/* Logo Section */}
           <div className="flex flex-col items-center justify-center mb-6 ">
             <Image
@@ -46,7 +46,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row w-full md:w-1/2 gap-1">
+          <div className="flex flex-col md:flex-row w-full md:w-1/2 gap-5">
             {/* Address Section */}
             <div className="mb-6 md:mb-0 text-left w-full md:w-1/2">
               <div className="mb-4 md:pr-5">
