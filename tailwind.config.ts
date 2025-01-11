@@ -20,6 +20,7 @@ export default {
       },
       fontSize: {
         base: "14px",
+        md: "24px",
       },
       backgroundImage: {
         "hero-bg-desktop": "url('/images/bg-hero.png')",
