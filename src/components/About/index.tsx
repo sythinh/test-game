@@ -1,10 +1,14 @@
+"use client";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
 
+// hooks
+import { useIsMobileResize } from "@/hooks/useMobile";
+
 const AboutUs = () => {
   const t = useTranslations("About");
-
+  const isMobile = useIsMobileResize();
   return (
     <section className="md:py-16 md:px-16 container mx-auto">
       <div className="flex flex-col md:flex-row mx-auto w-full md:w-2/3">
@@ -83,10 +87,12 @@ const AboutUs = () => {
       <div className="relative flex flex-col-reverse justify-center items-center mt-10">
         <Image src="/images/pin-map.png" alt="map" width={1160} height={428} />
         <Image
-          src="/images/Illustrator.png"
+          src={`/images/${
+            isMobile ? "Illustrator_mobile.png" : "Illustrator.png"
+          }`}
           alt="Witch"
-          width={450}
-          height={450}
+          width={isMobile ? 300 : 450}
+          height={isMobile ? 243 : 450}
           className="animate-float hover:scale-110 transition-transform duration-300"
         />
       </div>
