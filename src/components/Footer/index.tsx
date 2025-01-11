@@ -82,7 +82,7 @@ const Footer = () => {
 
             {/* Subscribe Section */}
             <div className="text-left w-full md:w-1/2">
-              <h3 className="text-lg font-semibold mb-2">{t("subscribe")}</h3>
+              <h3 className="text-lg font-bold mb-2">{t("subscribe")}</h3>
               <p className="mb-4">{t("subscribeDesc")}</p>
               <div className="relative w-full">
                 <Input
