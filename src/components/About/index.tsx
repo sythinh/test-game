@@ -26,7 +26,7 @@ const AboutUs = () => {
             <div className="">
               <div className="text-5xl font-extrabold text-blue-600 flex">
                 <h3 className="relative">600</h3>
-                <p className="text-lg top-[23px] relative font-serif">
+                <p className="text-lg top-[23px] relative font-extrabold">
                   {t("count")}
                 </p>
                 <span>+</span>
