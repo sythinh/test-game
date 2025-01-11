@@ -32,7 +32,7 @@ const OurGames = () => {
             />
             <div
               className={`p-0 md:p-4 absolute z-0 ${
-                index % 2 === 1 ? "bottom-5" : "bottom-14 md:bottom-24"
+                index % 2 === 1 ? "bottom-5" : "bottom-16 md:bottom-24"
               } left-2 text-white group`}
             >
               <h3 className="text-md leading-7 md:text-5xl font-bold">
